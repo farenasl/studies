@@ -1,0 +1,138 @@
+#!/usr/bin/env node
+
+/**
+ * Module dependencies.
+ */
+
+var app = require('../app');
+var debug = require('debug')('StockDatasetAPI:server');
+var http = require('http');
+const sqlite3 = require('sqlite3').verbose();
+var fs = require('fs');
+
+/**
+ * Get port from environment and store in Express.
+ */
+
+var port = normalizePort(8000);
+app.set('port', port);
+
+/**
+ * Create HTTP server.
+ */
+
+var server = http.createServer(app);
+
+/**
+ * Listen on provided port, on all network interfaces.
+ */
+
+server.listen(port);
+server.on('error', onError);
+server.on('listening', onListening);
+
+let db = new sqlite3.Database('./stockandtrades.db', (err) => {
+  if (err) {
+    console.error(err.message);
+  }
+  console.log('Connected to the stockandtrades database.');
+});
+
+let sql = 'CREATE TABLE IF NOT EXISTS users(id integer PRIMARY KEY, name TEXT NOT NULL)';
+
+db.run(sql, [], function(err) {
+  if (err) {
+    return console.log(err.message);
+  }
+  // get the last insert id
+  console.log(`created table "users"`);
+});
+
+sql = 'CREATE TABLE IF NOT EXISTS trades(id integer PRIMARY KEY, type TEXT NOT NULL, user INTEGER, symbol TEXT NOT NULL, shares INTEGER, price REAL, timestamp TEXT, FOREIGN KEY(user) REFERENCES users(id))';
+
+db.run(sql, [], function(err) {
+  if (err) {
+    return console.log(err.message);
+  }
+  // get the last insert id
+  console.log(`created table "trades"`);
+});
+
+//create all users for testing purpose
+sql = 'INSERT INTO users values (?, ?)';
+fs.readFile( __dirname + "/../" + "users.json", 'utf8', function (err, data) {
+  (JSON.parse(data)).forEach(function(row) {
+      // console.log(row.user.id + " " + row.user.name);
+      db.run(sql, [row.user.id, row.user.name], function(err) {
+        if (err) {
+          return console.log(err.message);
+        }
+        // get the last insert id
+        console.log(`A row has been inserted into users with rowid ${this.lastID}`);
+      });
+  });
+});
+
+
+
+db.close();
+
+/**
+ * Normalize a port into a number, string, or false.
+ */
+
+function normalizePort(val) {
+  var port = parseInt(val, 10);
+
+  if (isNaN(port)) {
+    // named pipe
+    return val;
+  }
+
+  if (port >= 0) {
+    // port number
+    return port;
+  }
+
+  return false;
+}
+
+/**
+ * Event listener for HTTP server "error" event.
+ */
+
+function onError(error) {
+  if (error.syscall !== 'listen') {
+    throw error;
+  }
+
+  var bind = typeof port === 'string'
+    ? 'Pipe ' + port
+    : 'Port ' + port;
+
+  // handle specific listen errors with friendly messages
+  switch (error.code) {
+    case 'EACCES':
+      console.error(bind + ' requires elevated privileges');
+      process.exit(1);
+      break;
+    case 'EADDRINUSE':
+      console.error(bind + ' is already in use');
+      process.exit(1);
+      break;
+    default:
+      throw error;
+  }
+}
+
+/**
+ * Event listener for HTTP server "listening" event.
+ */
+
+function onListening() {
+  var addr = server.address();
+  var bind = typeof addr === 'string'
+    ? 'pipe ' + addr
+    : 'port ' + addr.port;
+  debug('Listening on ' + bind);
+}
