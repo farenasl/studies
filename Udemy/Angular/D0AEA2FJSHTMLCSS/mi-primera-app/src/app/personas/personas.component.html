@@ -2,18 +2,17 @@
   <div class="row">
     <div class="col">
       <label>Titulo persona</label>
-      <input
-        type="text"
-        class="form-control"
-        [(ngModel)]="tituloPersona" />
-        <!-- (input)="onModificarPersona($event)" /> -->
+      <input type="text" class="form-control" [(ngModel)]="tituloPersona" />
+      <!-- (input)="onModificarPersona($event)" /> -->
 
       {{tituloPersona}}
       <h1>Listado de Personas</h1>
-      <button class="btn btn-primary"
-        [disabled]="!agregarPersona"
-        (click)="onCrearPersona()">Agregar Persona</button>
-        <p [style.display]="displayStatus">{{agregarPersonaStatus}}</p>
+      <button class="btn btn-primary" [disabled]="!agregarPersona" (click)="onCrearPersona()">Agregar Persona</button>
+      <p [style.display]="displayStatus">{{agregarPersonaStatus}}</p>
+      <p *ngIf="personaCreada; else sinPersona">con el título de: {{tituloPersona}}</p>
+      <ng-template #sinPersona>
+        <p>No se ha agredado ninguna persona!</p>
+      </ng-template>
       <app-persona></app-persona>
     </div>
   </div>
