@@ -9,20 +9,22 @@ import { PersonasService } from '../personas.service';
 })
 export class FormularioComponent {
   @Output() displayChange = new EventEmitter<boolean>();
-  @ViewChild('nombreInput') nameInput: ElementRef;
-  @ViewChild('apellidoInput') lastnameInput: ElementRef;
+  nameInput: string;
+  lastnameInput: string;
 
   constructor(private personasServices: PersonasService) {
     this.personasServices.saludarIdx.subscribe(
-      (indice: number) => alert("El índice es: " + (indice+1))
+      (indice: number) => alert("El índice es: " + (indice + 1))
     );
   }
 
   onAgregarPersona() {
-    if (this.nameInput.nativeElement.value && this.lastnameInput.nativeElement.value) {
-      let persona: Persona = new Persona(this.nameInput.nativeElement.value, this.lastnameInput.nativeElement.value);
+    if (this.nameInput && this.lastnameInput) {
+      let persona: Persona = new Persona(this.nameInput, this.lastnameInput);
       this.personasServices.agregarPersona(persona);
       this.displayChange.emit(true);
+      this.nameInput = '';
+      this.lastnameInput = '';
     }
     else {
       this.personasServices.agregarPersona(undefined);

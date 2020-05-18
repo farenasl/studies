@@ -1,9 +1,4 @@
-<div class="row">
-  <div class="col-xs-12">
-    <div>
-      {{index+1}}: {{p.nombre}} {{p.apellido}}
-      <button type="submit" class="btn btn-info"
-        (click)="saludar()"> Edit</button>
-    </div>
-  </div>
+<div class="item">
+  <input type="checkbox" (click)="saludar()" />
+  <p>{{index+1}}: {{p.nombre}} {{p.apellido}}</p>
 </div>
