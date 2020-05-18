@@ -9,13 +9,12 @@ import { Persona } from '../persona.model';
 export class FormularioComponent {
   @Output() personaCreada = new EventEmitter<Persona>();
   @Output() displayChange = new EventEmitter<string>();
-  nombreInput: string;
-  apellidoInput: string;
+  // nombreInput: string;
+  // apellidoInput: string;
 
-  onAgregarPersona() {
-    if (this.nombreInput && this.apellidoInput) {
-      // console.log(this.nombreInput + ' ' + this.apellidoInput);
-      this.personaCreada.emit(new Persona(this.nombreInput, this.apellidoInput));
+  onAgregarPersona(nombreInput:HTMLInputElement, apellidoInput:HTMLInputElement) {
+    if (nombreInput.value && apellidoInput.value) {
+      this.personaCreada.emit(new Persona(nombreInput.value, apellidoInput.value));
     }
     else
       this.personaCreada.emit();
