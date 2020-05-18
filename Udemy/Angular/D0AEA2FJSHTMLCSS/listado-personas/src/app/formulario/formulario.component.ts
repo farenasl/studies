@@ -12,7 +12,11 @@ export class FormularioComponent {
   @ViewChild('nombreInput') nameInput: ElementRef;
   @ViewChild('apellidoInput') lastnameInput: ElementRef;
 
-  constructor(private personasServices: PersonasService) {}
+  constructor(private personasServices: PersonasService) {
+    this.personasServices.saludarIdx.subscribe(
+      (indice: number) => alert("El índice es: " + (indice+1))
+    );
+  }
 
   onAgregarPersona() {
     if (this.nameInput.nativeElement.value && this.lastnameInput.nativeElement.value) {
