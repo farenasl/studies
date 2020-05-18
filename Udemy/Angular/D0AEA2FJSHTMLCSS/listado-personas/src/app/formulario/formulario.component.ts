@@ -16,7 +16,8 @@ export class FormularioComponent {
     if (nombreInput.value && apellidoInput.value) {
       this.personaCreada.emit(new Persona(nombreInput.value, apellidoInput.value));
     }
-    else
+    else {
       this.personaCreada.emit();
+    }
   }
 }
