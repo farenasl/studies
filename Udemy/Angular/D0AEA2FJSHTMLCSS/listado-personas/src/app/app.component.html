@@ -4,7 +4,7 @@
     <hr />
     <fieldset style="color: red;" [style.display]="displayStatus">{{statusMessage}}</fieldset>
     <app-formulario
-    (personaCreada)="onPersonaAgregada($event)"></app-formulario>
+    (displayChange)="onPersonaAgregada($event)"></app-formulario>
     <hr />
     <app-persona
       *ngFor="let p of personas; let i = index"
