@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Persona } from './persona.model';
-import { LoggingService } from './LoggingService.service';
 import { PersonasService } from './personas.service';
 
 @Component({
@@ -14,7 +13,7 @@ export class AppComponent implements OnInit{
   displayStatus: string = 'none';
   statusMessage: string = '* Debe ingresar ambos campos';
 
-  constructor(private loggingService: LoggingService, private personasService: PersonasService) {}
+  constructor(private personasService: PersonasService) {}
 
   ngOnInit(): void {
     this.personas = this.personasService.personas;
