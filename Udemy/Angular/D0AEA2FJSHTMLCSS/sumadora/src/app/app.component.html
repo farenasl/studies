@@ -2,26 +2,7 @@
 
 <div class="container">
   <div class="col">
-    <div class="row">
-      <label>Operando A</label>
-    </div>
-    <div class="row">
-      <input type="number" [(ngModel)]="opA" [placeholder]="pHValue">
-    </div>
-    <div class="row">
-      <label>Operando B</label>
-    </div>
-    <div class="row">
-      <input type="number" [(ngModel)]="opB" [placeholder]="pHValue">
-    </div>
-    <br />
-    <div class="row">
-      <button
-       class="btn btn-primary"
-       (click)="onSumar()">Sumar</button>
-    </div>
-    <div class="row">
-      <label>Resultado: {{resultado}}</label>
-    </div>
+    <app-form (sumar)="onSumar($event)"></app-form>
+    <app-result [resultado]="resultado"></app-result>
   </div>
 </div>

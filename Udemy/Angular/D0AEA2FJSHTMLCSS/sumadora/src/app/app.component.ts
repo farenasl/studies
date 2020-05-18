@@ -8,11 +8,11 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'Aplicación Sumadora';
   resultado: number;
-  pHValue: string = 'Escribe un número';
-  opA: number;
-  opB: number;
 
-  onSumar() {
-    this.resultado = this.opA + this.opB;
+  onSumar(result: number) {
+    if (!isNaN(result)) {
+      this.resultado = result;
+    }
+    console.log(this.resultado);
   }
 }
