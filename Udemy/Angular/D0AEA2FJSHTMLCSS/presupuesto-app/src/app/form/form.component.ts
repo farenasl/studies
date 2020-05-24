@@ -1,15 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Transaccion } from '../../models/transaccion.model';
+import { TransactionService } from 'src/services/transaction.service';
+
+declare var $: any;
 
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.css']
 })
-export class FormComponent implements OnInit {
+export class FormComponent {
+  type: string = 'ing';
+  tran: Transaccion = new Transaccion();
 
-  constructor() { }
+  constructor(private tranSvc: TransactionService) { }
 
-  ngOnInit() {
+  onAgregarTransaccion() {
+    if (!this.tran.isEmpty()) {
+      this.tranSvc.addTransaccion(this.tran, (this.type === 'ing' ? true : false));
+      this.tran = new Transaccion();
+    }
   }
-
 }

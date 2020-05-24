@@ -13,7 +13,7 @@ export class TransactionService {
     ];
 
     // True means ingresos, False means egresos
-    addIngresos(tran: Transaccion, type: boolean) {
+    addTransaccion(tran: Transaccion, type: boolean) {
         if (tran !== undefined) {
             if (type) {
                 this.ingresos.push(tran);
