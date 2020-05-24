@@ -6,6 +6,7 @@ import { HeaderComponent } from './header/header.component';
 import { FormComponent } from './form/form.component';
 import { IngresoComponent } from './ingreso/ingreso.component';
 import { EgresoComponent } from './egreso/egreso.component';
+import { TransactionService } from '../services/transaction.service';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,7 @@ import { EgresoComponent } from './egreso/egreso.component';
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [TransactionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

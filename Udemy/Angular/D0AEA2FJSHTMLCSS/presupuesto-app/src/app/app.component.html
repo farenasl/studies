@@ -1,8 +1,15 @@
-<app-header></app-header>
-<app-form></app-form>
-
+<!-- <app-header></app-header>
+<app-form></app-form> -->
 
 <div class="contenedor limpiarEstilos">
-    <app-ingreso></app-ingreso>
-    <app-egreso></app-egreso>
+    <div class="ingreso">
+        <h2 class="ingreso_titulo">Ingresos</h2>
+
+        <app-ingreso *ngFor="let tran of this.ingresos;"></app-ingreso>
+    </div>
+    <div class="egreso">
+        <h2 class="egreso_titulo">Egresos</h2>
+
+        <app-egreso *ngFor="let tran of egresos;"></app-egreso>
+    </div>
 </div>

@@ -1,13 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Transaccion } from '../models/transaccion.model';
+import { TransactionService } from '../services/transaction.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'presupuesto-app';
-  ingresos: Transaccion[] = [new Transaccion('Salario', 2100), new Transaccion('Venta coche', 1500)];
-  egresos: Transaccion[] = [new Transaccion('Renta departamento', 900), new Transaccion('Ropa', 435.28)];
+  ingresos: Transaccion[] = [];
+  egresos: Transaccion[] = [];
+
+  constructor(private tranSvc: TransactionService) {}
+
+  ngOnInit(): void {
+    this.ingresos = this.tranSvc.ingresos;
+    this.egresos = this.tranSvc.egresos;
+  }
 }
