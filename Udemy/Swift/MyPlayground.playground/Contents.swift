@@ -26,3 +26,17 @@ print("prueba")
 sleep(2)
 print("prueba2")
 
+func loveCalculator() {
+    let loveScore = Int.random(in: 0...100)
+    
+    if loveScore == 100 {
+        print("You love each other like Kanye loves Kanye")
+    }
+    else {
+        print("You'll be forever alone")
+    }
+}
+
+for _ in 0...100 {
+    loveCalculator()
+}
