@@ -19,3 +19,10 @@ for _ in 0...3 {
 }
 
 saludar()
+
+import Darwin
+
+print("prueba")
+sleep(2)
+print("prueba2")
+
