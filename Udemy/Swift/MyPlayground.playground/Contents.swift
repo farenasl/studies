@@ -43,3 +43,22 @@ func loveCalculator() {
 for _ in 0...100 {
     loveCalculator()
 }
+
+func loveCalculator2() {
+    let loveScore = Int.random(in: 0...100)
+    
+    switch loveScore {
+    case ...40:
+        print("You'll be forever alone")
+    case 41..<81:
+        print("You go together like Coke and Mentos")
+    case 81...100:
+        print("You love each other like Kanye loves Kanye")
+    default:
+        print("")
+    }
+}
+
+for _ in 0...100 {
+    loveCalculator2()
+}
