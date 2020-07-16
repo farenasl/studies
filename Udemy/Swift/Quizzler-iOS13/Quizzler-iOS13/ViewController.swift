@@ -56,7 +56,7 @@ class ViewController: UIViewController {
     }
     
     func updateQuestion() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.questionLabel.text = self.quiz[self.questionNumber].text
             self.trueButton.backgroundColor = UIColor.clear
             self.falseButton.backgroundColor = UIColor.clear
