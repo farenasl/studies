@@ -9,6 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController {
+    @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var trueButton: UIButton!
     @IBOutlet weak var falseButton: UIButton!
@@ -17,7 +18,7 @@ class ViewController: UIViewController {
     var quizBrain = QuizBrain()
     
     override func viewDidLoad() {
-        updateQuestion()
+        updateUI()
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
@@ -30,23 +31,17 @@ class ViewController: UIViewController {
             sender.backgroundColor = UIColor.red
         }
         
-        if quizBrain.questionNumber < quizBrain.quiz.count - 1  {
-            quizBrain.questionNumber += 1
-        }
-        else {
-            quizBrain.questionNumber = 0
-        }
+        quizBrain.setNext()
         
-        updateQuestion()
+        Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(updateUI), userInfo: nil, repeats: false)
     }
     
-    func updateQuestion() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            self.questionLabel.text = self.quizBrain.getQuestion()
-            self.progressBar.progress = self.quizBrain.getProgress()
-            self.trueButton.backgroundColor = UIColor.clear
-            self.falseButton.backgroundColor = UIColor.clear
-        }
+    @objc func updateUI() {
+        scoreLabel.text = "Score: \(quizBrain.getScore())"
+        questionLabel.text = quizBrain.getQuestion()
+        progressBar.progress = quizBrain.getProgress()
+        trueButton.backgroundColor = UIColor.clear
+        falseButton.backgroundColor = UIColor.clear
     }
 }
 
