@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F3A1E4124C51D3200762DBD /* MultipleQuizBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3A1E4024C51D3200762DBD /* MultipleQuizBrain.swift */; };
+		4F3A1E4324C51F3200762DBD /* MultiQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3A1E4224C51F3200762DBD /* MultiQuestion.swift */; };
 		4F6BCD0524BFDEE80073B29C /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6BCD0424BFDEE80073B29C /* Question.swift */; };
 		4F6BCD0A24C08C5C0073B29C /* QuizBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6BCD0924C08C5C0073B29C /* QuizBrain.swift */; };
 		AD4BDE4A22D878BA005BA4CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4BDE4922D878BA005BA4CC /* AppDelegate.swift */; };
@@ -19,6 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4F3A1E4024C51D3200762DBD /* MultipleQuizBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleQuizBrain.swift; sourceTree = "<group>"; };
+		4F3A1E4224C51F3200762DBD /* MultiQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiQuestion.swift; sourceTree = "<group>"; };
 		4F6BCD0424BFDEE80073B29C /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		4F6BCD0924C08C5C0073B29C /* QuizBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizBrain.swift; sourceTree = "<group>"; };
 		AD4BDE4622D878BA005BA4CC /* Quizzler-iOS13.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Quizzler-iOS13.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -48,6 +52,8 @@
 			children = (
 				4F6BCD0424BFDEE80073B29C /* Question.swift */,
 				4F6BCD0924C08C5C0073B29C /* QuizBrain.swift */,
+				4F3A1E4024C51D3200762DBD /* MultipleQuizBrain.swift */,
+				4F3A1E4224C51F3200762DBD /* MultiQuestion.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -177,6 +183,8 @@
 				4F6BCD0524BFDEE80073B29C /* Question.swift in Sources */,
 				AD4BDE4A22D878BA005BA4CC /* AppDelegate.swift in Sources */,
 				AD4BDE4C22D878BA005BA4CC /* SceneDelegate.swift in Sources */,
+				4F3A1E4124C51D3200762DBD /* MultipleQuizBrain.swift in Sources */,
+				4F3A1E4324C51F3200762DBD /* MultiQuestion.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
