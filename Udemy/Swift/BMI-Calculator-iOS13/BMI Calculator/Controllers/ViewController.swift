@@ -11,6 +11,8 @@ import UIKit
 class ViewController: UIViewController {
     @IBOutlet weak var heightValueLabel: UILabel!
     @IBOutlet weak var weightValueLabel: UILabel!
+    @IBOutlet weak var heightSlider: UISlider!
+    @IBOutlet weak var weightSlider: UISlider!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +25,10 @@ class ViewController: UIViewController {
     
     @IBAction func weightSliderChanged(_ sender: UISlider) {
         weightValueLabel.text = String(NSString(format: "%.0f", sender.value)) + "Kg"
+    }
+    
+    @IBAction func calculatePressed(_ sender: UIButton) {
+        print(weightSlider.value/(heightSlider.value*heightSlider.value))
     }
 }
 
