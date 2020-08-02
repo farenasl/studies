@@ -29,6 +29,9 @@ class ViewController: UIViewController {
     
     @IBAction func calculatePressed(_ sender: UIButton) {
         print(weightSlider.value/(heightSlider.value*heightSlider.value))
+        
+        let secondVC = SecondViewController()
+        self.present(secondVC, animated: true, completion: nil)
     }
 }
 
