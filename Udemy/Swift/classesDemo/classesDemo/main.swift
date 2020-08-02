@@ -18,5 +18,7 @@ dragon.move()
 
 let skeleton1 = skeleton3
 skeleton1.takeDamage(amount: 10)
-
+skeleton1.takeDamage(amount: 10)
+skeleton3.takeDamage(amount: 10)
+print(skeleton1.health)
 print(skeleton3.health)
