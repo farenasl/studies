@@ -22,3 +22,12 @@ skeleton1.takeDamage(amount: 10)
 skeleton3.takeDamage(amount: 10)
 print(skeleton1.health)
 print(skeleton3.health)
+
+var skeleton4 = EnemyStruct(health: 100, attackStrength: 10)
+var skeleton5 = skeleton4
+
+skeleton4.takeDamage(amount: 10)
+skeleton4.takeDamage(amount: 10)
+skeleton5.takeDamage(amount: 10)
+print(skeleton4.health)
+print(skeleton5.health)

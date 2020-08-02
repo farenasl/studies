@@ -10,6 +10,7 @@
 		4F65324924CDDC3C0003AC88 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F65324824CDDC3C0003AC88 /* main.swift */; };
 		4F65325024CDDCEF0003AC88 /* Enemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F65324F24CDDCEF0003AC88 /* Enemy.swift */; };
 		4F65325224CDDF3F0003AC88 /* Dragon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F65325124CDDF3F0003AC88 /* Dragon.swift */; };
+		4F65325424D6F0270003AC88 /* EnemyStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F65325324D6F0270003AC88 /* EnemyStruct.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -29,6 +30,7 @@
 		4F65324824CDDC3C0003AC88 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		4F65324F24CDDCEF0003AC88 /* Enemy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enemy.swift; sourceTree = "<group>"; };
 		4F65325124CDDF3F0003AC88 /* Dragon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dragon.swift; sourceTree = "<group>"; };
+		4F65325324D6F0270003AC88 /* EnemyStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyStruct.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 				4F65324824CDDC3C0003AC88 /* main.swift */,
 				4F65324F24CDDCEF0003AC88 /* Enemy.swift */,
 				4F65325124CDDF3F0003AC88 /* Dragon.swift */,
+				4F65325324D6F0270003AC88 /* EnemyStruct.swift */,
 			);
 			path = classesDemo;
 			sourceTree = "<group>";
@@ -129,6 +132,7 @@
 				4F65325024CDDCEF0003AC88 /* Enemy.swift in Sources */,
 				4F65324924CDDC3C0003AC88 /* main.swift in Sources */,
 				4F65325224CDDF3F0003AC88 /* Dragon.swift in Sources */,
+				4F65325424D6F0270003AC88 /* EnemyStruct.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
