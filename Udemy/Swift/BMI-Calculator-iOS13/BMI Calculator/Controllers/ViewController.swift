@@ -31,6 +31,7 @@ class ViewController: UIViewController {
         print(weightSlider.value/(heightSlider.value*heightSlider.value))
         
         let secondVC = SecondViewController()
+        secondVC.bmiValue = String(NSString(format: "%.1f", weightSlider.value/(heightSlider.value*heightSlider.value)))
         self.present(secondVC, animated: true, completion: nil)
     }
 }
