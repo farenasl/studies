@@ -1,17 +1,22 @@
 
 print("Hello, World!")
 
-let skeleton = Enemy()
+let skeleton = Enemy(health: 100, attackStrength: 10)
 print(skeleton.health)
 skeleton.move()
 skeleton.attack()
 
-let skeleton2 = Enemy()
-let skeleton3 = Enemy()
+let skeleton2 = Enemy(health: 100, attackStrength: 10)
+let skeleton3 = Enemy(health: 100, attackStrength: 10)
 
-let dragon = Dragon()
+let dragon = Dragon(health: 100, attackStrength: 10)
 dragon.wingSpan = 5
 dragon.attackStrength = 15
 dragon.talk(speech: "My teeth are swords!, My claws are spears! My wings are a hurricane")
 dragon.attack()
 dragon.move()
+
+let skeleton1 = skeleton3
+skeleton1.takeDamage(amount: 10)
+
+print(skeleton3.health)
