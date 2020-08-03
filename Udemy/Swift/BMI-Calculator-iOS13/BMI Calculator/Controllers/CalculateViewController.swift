@@ -30,9 +30,11 @@ class CalculateViewController: UIViewController {
     @IBAction func calculatePressed(_ sender: UIButton) {
         print(weightSlider.value/(heightSlider.value*heightSlider.value))
         
-        let secondVC = SecondViewController()
-        secondVC.bmiValue = String(NSString(format: "%.1f", weightSlider.value/(heightSlider.value*heightSlider.value)))
-        self.present(secondVC, animated: true, completion: nil)
+//        let secondVC = SecondViewController()
+//        secondVC.bmiValue = String(NSString(format: "%.1f", weightSlider.value/(heightSlider.value*heightSlider.value)))
+//        self.present(secondVC, animated: true, completion: nil)
+        
+        self.performSegue(withIdentifier: "goToResult", sender: self)
     }
 }
 
