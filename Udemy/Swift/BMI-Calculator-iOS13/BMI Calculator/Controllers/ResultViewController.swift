@@ -9,7 +9,7 @@
 import UIKit
 
 class ResultViewController: UIViewController {
-    var bmiValue: String!
+    var bmiValue: String?
     
     @IBOutlet weak var bmiLabel: UILabel!
     @IBOutlet weak var adviceLabel: UILabel!
