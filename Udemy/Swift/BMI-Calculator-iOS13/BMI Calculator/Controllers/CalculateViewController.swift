@@ -46,6 +46,8 @@ class CalculateViewController: UIViewController {
             let destinationVC = segue.destination as! ResultViewController
 //            destinationVC.bmiValue = String(NSString(format: "%.1f", weightSlider.value/(heightSlider.value*heightSlider.value)))
             destinationVC.bmiValue = calculatorBrain.getBMIValue()
+            destinationVC.advice = calculatorBrain.getBMILabel()
+            destinationVC.color = calculatorBrain.getBMIColor()
         }
     }
 }
