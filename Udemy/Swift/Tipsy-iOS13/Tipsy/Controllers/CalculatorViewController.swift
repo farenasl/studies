@@ -16,6 +16,8 @@ class CalculatorViewController: UIViewController {
     @IBOutlet weak var splitNumberLabel: UILabel!
     
     var tip = 0.1
+    var stepper = 2
+    var amount = 0.0
 
     @IBAction func tipChanged(_ sender: UIButton) {
         setAllUnselected()
@@ -24,10 +26,17 @@ class CalculatorViewController: UIViewController {
     }
     
     @IBAction func stepperValueChanged(_ sender: UIStepper) {
+        splitNumberLabel.text = Int(sender.value).description
     }
     
     @IBAction func calculatePressed(_ sender: UIButton) {
         print(String(format:"%.1f%",tip))
+        print(splitNumberLabel.text!)
+        print(billTextField.text!)
+        amount = Double(billTextField.text!) ?? 0
+        amount *= (1+tip)
+        amount /= Double(splitNumberLabel.text!) ?? 1
+        print(String(format:"%.2f%",amount))
     }
     
     func setAllUnselected() {
