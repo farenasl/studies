@@ -37,6 +37,15 @@ class CalculatorViewController: UIViewController {
         amount *= (1+tip)
         amount /= Double(splitNumberLabel.text!) ?? 1
         print(String(format:"%.2f%",amount))
+        
+        self.performSegue(withIdentifier: "goToResult", sender: self)
+    }
+            
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "goToResult") {
+            let destinationVC = segue.destination as! ResultsViewController
+            destinationVC.amount = String(format:"%.2f%",amount)
+        }
     }
     
     func setAllUnselected() {
