@@ -8,7 +8,13 @@
 
 import Foundation
 
+protocol CoinManagerDelegate {
+    func didUpdatePrice(price: String, currency: String)
+    func didFailWithError(error: Error)
+}
+
 struct CoinManager {
+    var delegate: CoinManagerDelegate?
     
     let baseURL = "https://rest.coinapi.io/v1/exchangerate/BTC"
     let apiKey = "7166D99D-8691-4600-87BB-11B02D1305D0"
@@ -16,26 +22,25 @@ struct CoinManager {
     let currencyArray = ["AUD", "BRL","CAD","CLP","CNY","EUR","GBP","HKD","IDR","ILS","INR","JPY","MXN","NOK","NZD","PLN","RON","RUB","SEK","SGD","USD","ZAR"]
 
     func getCoinPrice(for currency: String) {
-        performRequest(with: "\(baseURL)/\(currency)?apikey=\(apiKey)")
-    }
-    
-    func performRequest(with urlString: String) {
+        let urlString = "\(baseURL)/\(currency)?apikey=\(apiKey)"
+        
         if let url = URL(string: urlString) {
-            let session = URLSession(configuration: .default)
-            let task = session.dataTask(with: url) { (data, response, error) in
-                if error != nil {
-                    print(error!)
-                    return
-                }
-                if let safeData = data {
-                    if let coin = self.parseJSON(safeData) {
-                        print(coin)
+                    let session = URLSession(configuration: .default)
+                    let task = session.dataTask(with: url) { (data, response, error) in
+                        if error != nil {
+                            self.delegate?.didFailWithError(error: error!)
+                            return
+                        }
+                        if let safeData = data {
+                            if let bcPrice = self.parseJSON(safeData) {
+                                print(bcPrice)
+                                self.delegate?.didUpdatePrice(price: String(format: "%.2f", bcPrice), currency: currency)
+                            }
+        //                    print(String(data: safeData, encoding: .utf8)!)
+                        }
                     }
-//                    print(String(data: safeData, encoding: .utf8)!)
+                    task.resume()
                 }
-            }
-            task.resume()
-        }
     }
     
     func parseJSON(_ data: Data) -> Double? {
@@ -46,7 +51,7 @@ struct CoinManager {
             
             return lastPrice
         } catch {
-            print(error)
+            self.delegate?.didFailWithError(error: error)
             return nil
         }
     }
