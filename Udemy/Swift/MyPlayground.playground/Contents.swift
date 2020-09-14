@@ -200,3 +200,19 @@ extension UIButton {
 
 let button2 = UIButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
 button2.makeCircular()
+
+func fibonacci(n: Int) {
+    var result = [Int]()
+    for number in 0..<n {
+        if number == 0 || number == 1 {
+            result.append(number)
+        }
+        else {
+            result.append(result[number-1]+result[number-2])
+        }
+    }
+    
+    print(result)
+}
+
+fibonacci(n: 5)
