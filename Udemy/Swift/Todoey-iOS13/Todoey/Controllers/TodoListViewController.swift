@@ -18,7 +18,6 @@ class TodoListViewController: UITableViewController {
         }
     }
     
-//    let defaults = UserDefaults.standard
     let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("Items.plist")
 
     override func viewDidLoad() {
@@ -40,8 +39,6 @@ class TodoListViewController: UITableViewController {
         } else {
             cell.textLabel?.text = "No items added"
         }
-        
-        
         
         return cell
     }
@@ -93,17 +90,6 @@ class TodoListViewController: UITableViewController {
         
         present(alert, animated: true, completion: nil)
     }
-    
-    //MARK: - Add New Items
-//    func saveItems() {
-//        do {
-//            try context.save()
-//        } catch {
-//            print("Error saving context, \(error)")
-//        }
-//
-//        self.tableView.reloadData()
-//    }
     
     func loadItems() {
         todoItems = selectedCategory?.items.sorted(byKeyPath: "title", ascending: true)
