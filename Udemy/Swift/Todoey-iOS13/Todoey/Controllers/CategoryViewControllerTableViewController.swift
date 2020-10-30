@@ -21,6 +21,14 @@ class CategoryViewControllerTableViewController: SwipeTableViewController {
         tableView.separatorStyle = .none
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        guard let navBar = navigationController?.navigationBar else {
+            fatalError("Navigation controller does not exist.")
+        }
+        
+        navBar.backgroundColor = UIColor(hexString: "1D9BF6")
+    }
+    
     //MARK: - TableView Datasource Methods
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return categories?.count ?? 1
@@ -31,6 +39,10 @@ class CategoryViewControllerTableViewController: SwipeTableViewController {
         if let category = categories?[indexPath.row] {
             cell.textLabel?.text = category.name
             cell.backgroundColor = UIColor(hexString: category.color)
+            guard let categoryColour = UIColor(hexString: category.color) else {
+                fatalError()
+            }
+            cell.textLabel?.textColor = ContrastColorOf(categoryColour, returnFlat: true)
         }
         
         return cell
