@@ -61,3 +61,22 @@ numberOfPizza = 6
 
 print(numberOfPizza)
 
+// Observed properties
+
+var pizzaInInches2: Int = 10 {
+    willSet {
+        print(pizzaInInches2)
+        print(newValue)
+    }
+    didSet {
+        print(oldValue)
+        print(pizzaInInches2)
+        if pizzaInInches2 >= 18 {
+            print("Inavlid size specified, pizzaInInches2 set to 18.")
+            pizzaInInches2 = 18
+        }
+    }
+}
+
+pizzaInInches2 = 33
+print(pizzaInInches2)
