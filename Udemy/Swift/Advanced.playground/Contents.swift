@@ -80,3 +80,19 @@ var pizzaInInches2: Int = 10 {
 
 pizzaInInches2 = 33
 print(pizzaInInches2)
+
+//Paint challenge
+var width: Float = 3.4, height: Float = 2.1
+
+var bucketsOfPaint: Int {
+    get {
+        Int(ceilf(width*height/1.5))
+    }
+    set {
+        print("\(newValue) buckets of paint can cover \(Float(newValue) * 1.5) sqmts.")
+    }
+}
+
+bucketsOfPaint = 8
+
+print(bucketsOfPaint)
