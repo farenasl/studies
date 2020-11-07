@@ -13,11 +13,14 @@ class ViewController: UIViewController {
     @IBOutlet weak var displayLabel: UILabel!
     private var isFinishedTypingNumber: Bool = true
     
-    
-    
+
     @IBAction func calcButtonPressed(_ sender: UIButton) {
         //What should happen when a non-number button is pressed
         isFinishedTypingNumber = true
+        
+        guard let number = Float(displayLabel.text!) else {
+            fatalError("Cannot convert display label text to a Float")
+        }
     }
 
     
