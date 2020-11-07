@@ -30,3 +30,16 @@ func calcPizzaSlices() {
 calcPizzaSlices()
 print(numberOfSlices)
 
+var numberOfSlicesComputed3: Int {
+    get {
+        return pizzaInInches - 4
+    }
+    set {
+        print("numberOfSlices now has a new value which is \(newValue)")
+    }
+}
+
+numberOfSlicesComputed3 = 12
+
+let b = numberOfSlicesComputed3 + 2
+
