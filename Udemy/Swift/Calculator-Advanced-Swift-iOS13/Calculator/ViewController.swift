@@ -44,6 +44,16 @@ class ViewController: UIViewController {
                 displayLabel.text = numValue
                 isFinishedTypingNumber = false
             } else {
+                if numValue == "." {
+                    guard let currentDisplayValue = Float(displayLabel.text!) else {
+                        fatalError("Cannot convert display label text to a Float!")
+                    }
+                    let isInt = floorf(currentDisplayValue) == currentDisplayValue
+                    
+                    if !isInt {
+                        return
+                    }
+                }
                 displayLabel.text! += numValue
             }
         }
