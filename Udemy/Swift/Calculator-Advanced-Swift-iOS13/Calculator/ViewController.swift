@@ -21,6 +21,19 @@ class ViewController: UIViewController {
         guard let number = Float(displayLabel.text!) else {
             fatalError("Cannot convert display label text to a Float")
         }
+        
+        if let calcMethod = sender.currentTitle {
+            switch calcMethod {
+                case "+/-":
+                    displayLabel.text = String(number * -1)
+                case "AC":
+                    displayLabel.text = String(0)
+                case "%":
+                    displayLabel.text = String(number / 100)
+                default:
+                    displayLabel.text = displayLabel.text
+            }
+        }
     }
 
     
