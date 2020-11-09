@@ -9,34 +9,38 @@
 import UIKit
 
 class ViewController: UIViewController {
-    
     @IBOutlet weak var displayLabel: UILabel!
     private var isFinishedTypingNumber: Bool = true
-    
+    private var displayValue: Double {
+        get {
+            guard let number = Double(displayLabel.text!) else {
+                fatalError("Cannot convert display label text to a Double")
+            }
+            return number
+        }
+        set {
+            displayLabel.text = String(newValue)
+        }
+    }
 
     @IBAction func calcButtonPressed(_ sender: UIButton) {
         //What should happen when a non-number button is pressed
         isFinishedTypingNumber = true
         
-        guard let number = Float(displayLabel.text!) else {
-            fatalError("Cannot convert display label text to a Float")
-        }
-        
         if let calcMethod = sender.currentTitle {
             switch calcMethod {
                 case "+/-":
-                    displayLabel.text = String(number * -1)
+                    displayValue *= -1
                 case "AC":
                     displayLabel.text = String(0)
                 case "%":
-                    displayLabel.text = String(number / 100)
+                    displayValue /=  100
                 default:
-                    displayLabel.text = displayLabel.text
+                    break
             }
         }
     }
 
-    
     @IBAction func numButtonPressed(_ sender: UIButton) {
         //What should happen when a number is entered into the keypad
         if let numValue = sender.currentTitle {
@@ -45,10 +49,7 @@ class ViewController: UIViewController {
                 isFinishedTypingNumber = false
             } else {
                 if numValue == "." {
-                    guard let currentDisplayValue = Float(displayLabel.text!) else {
-                        fatalError("Cannot convert display label text to a Float!")
-                    }
-                    let isInt = floorf(currentDisplayValue) == currentDisplayValue
+                    let isInt = floor(displayValue) == displayValue
                     
                     if !isInt {
                         return
@@ -58,6 +59,4 @@ class ViewController: UIViewController {
             }
         }
     }
-
 }
-
