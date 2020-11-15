@@ -1,0 +1,6 @@
+framework module Pods_WhatFlowerIs {
+  umbrella header "Pods-WhatFlowerIs-umbrella.h"
+
+  export *
+  module * { export * }
+}
