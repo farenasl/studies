@@ -14,12 +14,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     override func viewDidLoad() {
         super.viewDidLoad()
         imagePicker.delegate = self
-        imagePicker.allowsEditing = false
+        imagePicker.allowsEditing = true
         imagePicker.sourceType = .photoLibrary
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        let userPickedImage = info[UIImagePickerController.InfoKey.originalImage]
+        let userPickedImage = info[UIImagePickerController.InfoKey.editedImage]
         imageView.image = userPickedImage as? UIImage
         
         imagePicker.dismiss(animated: true, completion: nil)
