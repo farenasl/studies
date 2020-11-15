@@ -12,9 +12,10 @@ import Alamofire
 import SwiftyJSON
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
-    let wikipediaURL = "https://es.wikipedia.org/w/api.php"
+    let wikipediaURL = "https://en.wikipedia.org/w/api.php"
     let imagePicker = UIImagePickerController()
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var label: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,6 +76,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 print("Got the wikipedia info.")
 //                print(response.result)
                 print(response)
+                
+                let flowerJSON : JSON = JSON(response.result.value!)
+                let pageId = flowerJSON["query"]["pageids"][0].stringValue
+                let flowerDescription = flowerJSON["query"]["pages"][pageId]["extract"].stringValue
+                
+                self.label.text = flowerDescription
             }
         }
     }
